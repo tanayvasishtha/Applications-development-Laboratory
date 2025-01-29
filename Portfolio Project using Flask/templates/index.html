@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="{{ url_for('static', filename='images/profile.jpeg') }}" alt="Profile Picture">
+            </div>
+            <div class="profile-text">
+                <h1>Tanay Vasishtha</h1>
+                <p>Web Developer | Designer | Creator</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div>
+                <p>Hello! I'm a passionate web developer with experience in creating responsive and user-friendly
+                    websites. I love turning ideas into reality through code and design.</p>
+                <p>I'm constantly learning and exploring new technologies to stay up-to-date with the latest web
+                    development trends.</p>
+            </div>
+            <div class="skills">
+                <h3>Skills</h3>
+                <ul>
+                    <li class="skill-item">HTML5</li>
+                    <li class="skill-item">CSS3</li>
+                    <li class="skill-item">JavaScript</li>
+                    <li class="skill-item">Python</li>
+                    <li class="skill-item">Flask</li>
+                    <li class="skill-item">Git</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+                <div class="tech-stack">
+                    {% for tech in project.technologies %}
+                    <span class="tech-tag">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:tanayvasishtha@example.com">tanayvasishtha@example.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/tanayvasishtha/"
+                    target="_blank">linkedin.com/in/tanayvasishtha/</a></p>
+            <p>GitHub: <a href="https://github.com/tanayvasishtha" target="_blank">github.com/tanayvasishtha</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Tanay Vasishtha - All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>
