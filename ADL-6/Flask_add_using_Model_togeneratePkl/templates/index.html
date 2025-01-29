@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <h1>Calculator</h1>
+            <form method="POST" action="/">
+                <div class="input-field">
+                    <label for="number1">First Number:</label>
+                    <input type="text" id="number1" name="number1" required>
+                </div>
+                
+                <div class="input-field">
+                    <label for="number2">Second Number:</label>
+                    <input type="text" id="number2" name="number2" required>
+                </div>
+
+                <button type="submit">Compute Sum</button>
+            </form>
+
+            {% if result is not none %}
+            <div class="result">
+                Result: {{ result }}
+            </div>
+            {% endif %}
+
+            {% if history %}
+            <div class="history">
+                <h3>Computation History</h3>
+                <div class="history-list">
+                    {% for item in history %}
+                    <div class="history-item">{{ item }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
